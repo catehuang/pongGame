@@ -33,16 +33,18 @@ while is_game_on:
         ball.bounce_by_wall()
 
     # hit by paddles (x direction)
-    if ball.distance(player) < 50 and ball.xcor() > 330 or ball.distance(computer) < 50 and ball.xcor() < -340:
+    # if ball.distance(player) < 50 and ball.xcor() > 330 or ball.distance(computer) < 50 and ball.xcor() < -340:
+    if ball.xcor() > 340 and player.ycor() - 50 <= ball.ycor() <= player.ycor() + 50 or \
+            ball.xcor() < -340 and computer.ycor() - 50 <= ball.ycor() <= computer.ycor() + 50:
         ball.bounce_by_paddle()
         speed_rate /= 1.5
 
-    if ball.xcor() > 400:
+    if ball.xcor() > 390:
         scoreBoard.computer_get_one_point()
         ball.reset_ball()
         speed_rate = INITIAL_SPEED_RATE
 
-    if ball.xcor() < -400:
+    if ball.xcor() < -390:
         scoreBoard.player_get_one_point()
         ball.reset_ball()
         speed_rate = INITIAL_SPEED_RATE
