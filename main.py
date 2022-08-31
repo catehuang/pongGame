@@ -38,13 +38,19 @@ while is_game_on:
         computer_bottom = computer.ycor() - 50
         # the radius of a ball is 10; the height of a paddle is 100 in total
         if ball.ycor() - 10 > computer_top:
-            computer.move_up()
+            computer.move_up_computer()
         elif ball.ycor() + 10 < computer_bottom:
-            computer.move_down()
+            computer.move_down_computer()
+    # moves back to the y-center after hit ball
+    elif ball.x_move > 0 and ball.xcor() < -200:
+        if computer.ycor() > 0:
+            computer.move_down_computer()
+        else:
+            computer.move_up_computer()
 
     # hit by paddles (x direction)
     if ball.xcor() > 340 and player.ycor() - 50 <= ball.ycor() <= player.ycor() + 50 or \
-            ball.xcor() < -340 and computer.ycor() - 50 <= ball.ycor() <= computer.ycor() + 50:
+       ball.xcor() < -340 and computer.ycor() - 50 <= ball.ycor() <= computer.ycor() + 50:
         if ball.xcor() < 360 or ball.xcor() < -370:
             ball.bounce_by_paddle()
             speed_rate /= 1.5

@@ -1,6 +1,7 @@
 from turtle import Turtle
 
-MOVING_DISTANCE = 20
+PLAYER_MOVING_DISTANCE = 25
+COMPUTER_MOVING_DISTANCE = 15
 
 
 class Paddle(Turtle):
@@ -18,10 +19,20 @@ class Paddle(Turtle):
 
     def move_up(self):
         if self.ycor() < 240:
-            y_position = self.ycor() + MOVING_DISTANCE
+            y_position = self.ycor() + PLAYER_MOVING_DISTANCE
             self.goto(self.x_position, y_position)
 
     def move_down(self):
         if self.ycor() > -240:
-            y_position = self.ycor() - MOVING_DISTANCE
+            y_position = self.ycor() - PLAYER_MOVING_DISTANCE
+            self.goto(self.x_position, y_position)
+
+    def move_up_computer(self):
+        if self.ycor() < 240:
+            y_position = self.ycor() + COMPUTER_MOVING_DISTANCE
+            self.goto(self.x_position, y_position)
+
+    def move_down_computer(self):
+        if self.ycor() > -240:
+            y_position = self.ycor() - COMPUTER_MOVING_DISTANCE
             self.goto(self.x_position, y_position)
